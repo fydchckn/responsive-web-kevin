@@ -372,6 +372,18 @@ position: absolute;
 }
 .primary-footer-form{
   grid-area: primary-footer-form;
+  
+  display: grid;
+  align-content: space-between;
+}
+.primary-footer-form form{
+  display: flex;
+  gap:var(--size-200)
+}
+input:where([type="text"], [type="email"]){
+  border-radius: 100vw;
+  border: none;
+  padding: var(--size-300) var(--size-400);
 }
 
 
@@ -379,7 +391,7 @@ position: absolute;
 
 .footer-nav{
   columns: 2;
-  gap: max(15vw, 2rem);
+  gap: clamp(var(--size-200), 15vw, var(--size-900));
 }
 .footer-nav a{
   text-decoration: none;
