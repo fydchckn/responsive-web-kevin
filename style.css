@@ -133,9 +133,9 @@ picture {
 
 .container{
   --max-width: 1110px;
-  --padding: 1rem;
+  --container-padding: 1rem;
 
-  width: min(var(--max-width), 100% - (var(--padding) * 2));
+  width: min(var(--max-width), 100% - (var(--container-padding) * 2));
   margin-inline: auto;
 }
 
@@ -153,7 +153,7 @@ picture {
 .vertical-center{
   align-items: center;
 }
-
+ 
 @media(min-width:50em){
   .justify-self-md{
     justify-self: end;
@@ -264,29 +264,70 @@ picture {
 
 .numbered-items{
   counter-reset: count;
+  margin-inline: auto;
+  width: fit-content;
 }
 .numbered-items li{
   counter-increment: count;
 }
 .numbered-items div{
   display: grid;
+  position: relative;
   column-gap: var(--size-400);
   align-items: center;
   grid-template-columns: min-content 1fr 1fr;
 }
-.numbered-items p{
+
+.numbered-items-body{
   grid-column: 1 / -1;
 }
+@media(min-width:30em){
+  .numbered-items-body{
+    grid-column: 2 / -1;
+  }
+}
 
+.numbered-items-title{
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  line-height: 1;
+}
+
+.numbered-items div::before,
+.numbered-items div::after{
+  height: 40px;
+  border-radius: 100vw;
+}
 
 .numbered-items div::before{
   content: "0" counter(count);
   background-color: var(--clr-accent-400);
   color: var(--clr-neutral-100);
   font-weight: var(--fw-bold);
-  padding: var(--size-200) var(--size-500);
-  border-radius: 100vw;
+  padding: 0 var(--size-500);
+  display: flex;
+  align-items: center;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
 }
+
+@media(max-width:30em){
+  .numbered-items div::after{
+    --bg: var(--clr-accent-100);
+    content: "";
+    display: block;
+    z-index: -1;
+    border-radius: 100vw 0 0 100vw;
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    box-shadow: 5em 0 0 var(--bg);
+    background: var(--bg);
+  }
+}
+
+
+
+
 
 
 
@@ -469,6 +510,21 @@ input:where([type="text"], [type="email"]){
 .text-primary-400{
   color: var(--clr-primary-400);
 }
+.text-align-center{
+  text-align: center;
+}
+.text-align-center p{
+  margin-inline: auto;
+}
+@media (max-width:50em){
+  .text-align-center-for-sm{
+    text-align: center;
+  }
+  .text-align-center-for-sm p{
+    margin-inline: auto;
+  }
+}
+
 .text-accent-400{
  color: var(--clr-accent-400);
 }
@@ -535,6 +591,9 @@ input:where([type="text"], [type="email"]){
 }
 .padding-block-700{
  padding-block: var(--size-700);
+}
+.margin-bottom-700{
+  margin-block-end: var(--size-700);
 }
 
 .display-btn-none{
