@@ -9,6 +9,11 @@ navtoggle.addEventListener('click', () => {
 })
 
 const slider = new A11YSlider(document.querySelector('.slider'), {
-    adaptiveHeight: true,
-    dots: false
+    adaptiveHeight: true,       
+    dots: true,
+    responsive: {
+        480: {
+          dots: true, // dots enabled 1280px and up
+            }
+        }
   });
