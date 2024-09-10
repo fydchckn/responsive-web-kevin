@@ -3,10 +3,13 @@ const navtoggle = document.querySelector(".mobile-nav");
 const primarynav = document.querySelector(".primary-navigation");
 
 navtoggle.addEventListener('click', () => {
-    primarynav.hasAttribute("nav-opened") ? navtoggle.setAttribute("aria-expanded", false) : navtoggle.setAttribute("aria-expanded", true)
+   
+    const isExpanded = navtoggle.getAttribute("aria-expanded") === "true";
+    navtoggle.setAttribute("aria-expanded", !isExpanded);
+    
     primarynav.classList.toggle("nav-opened");
     primaryheader.toggleAttribute("data-overlay");
-})
+});
 
 const slider = new A11YSlider(document.querySelector('.slider'), {
     adaptiveHeight: true,       
