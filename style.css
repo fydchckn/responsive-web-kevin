@@ -519,6 +519,7 @@ position: absolute;
 .primary-footer__logo{
   grid-area: logo;
   display: flex;
+  justify-content: center;
   
 }
 .primary-footer__form{
@@ -527,7 +528,7 @@ position: absolute;
 .primary-footer__copyright{
   grid-area: copyright;
   opacity: 0.7;
-  text-align: right;
+  text-align: center;
 }
 
 .primary-footer__nav-wrapper{
